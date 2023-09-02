@@ -9,7 +9,9 @@ let schema = new Schema({
     language: {type: String, required: true },
     description: {type: String, required: true},
     image: {type: String, required: true},
-    user: {type: Types.ObjectId, ref: 'users'}
+    user: {type: Types.ObjectId, ref: 'users'},
+    itineraries: {type: Types.ObjectId, ref: 'itineraries'},
+    activities: [{type: Types.ObjectId, ref: 'activities'}]
     
 },{
     timestamps: true

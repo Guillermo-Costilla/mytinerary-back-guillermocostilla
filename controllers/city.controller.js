@@ -8,10 +8,6 @@ const controller = {
       queries.city = new RegExp(`^${req.query.city}`, "i");
     }
 
-    if (req.query.country) {
-      queries.country = new RegExp(`^${req.query.country}`, "i");
-    }
-
     try {
       const cities = await City.find(queries);
 
@@ -37,7 +33,7 @@ const controller = {
 
   getCityById: async (req, res) => {
     try {
-      const city = await City.findById(req.params.id);
+      const city = await City.findById(req.params.id).populate('itineraries').populate('activities');
 
       if (city) {
         return res.status(200).json({
@@ -75,15 +71,14 @@ const controller = {
     }
   },
 
-  updateCities: async(req, res) => {
+  updateCities: async (req, res) => {
     try {
-
-      await City.updateOne({_id: req.params.id}, req.body)
+      await City.updateOne({ _id: req.params.id }, req.body);
 
       return res.status(200).json({
         success: true,
-        message: 'la ciudad se actualizo'
-      })
+        message: "la ciudad se actualizo",
+      });
     } catch (error) {
       console.log(error);
       res.status(500).json({
@@ -92,23 +87,22 @@ const controller = {
       });
     }
   },
-  
-  deleteCities: async (req, res) => {
 
+  deleteCities: async (req, res) => {
     try {
-      await Event.deleteOne({_id: req.params.id})
+      await Event.deleteOne({ _id: req.params.id });
 
       return res.status(200).json({
-          success: true,
-          message: 'The city was successfully eliminated'
-      })
-  } catch (error) {
-      console.log(error)
+        success: true,
+        message: "The city was successfully eliminated",
+      });
+    } catch (error) {
+      console.log(error);
       return res.status(500).json({
-          success: false,
-          message: 'Error when deleting the city'
-      })
-  }
+        success: false,
+        message: "Error when deleting the city",
+      });
+    }
   },
 };
 
