@@ -1,5 +1,7 @@
-import  express  from 'express';
+import express  from 'express';
 import cityController from '../controllers/city.controller.js';
+import { isAdmin } from '../middlewares/IsAdmin.middleware.js';
+import passport from '../middlewares/passport.js';
 
 const router = express.Router();
 
@@ -9,10 +11,10 @@ router.get('/', getCities);
 
 router.get('/:id', getCityById);
 
-router.post('/', createCities);
+router.post('/', passport.authenticate( 'jwt',{ session: false}), isAdmin, createCities);
 
-router.put('/:id', updateCities);
+router.put('/:id', passport.authenticate( 'jwt',{ session: false}), isAdmin, updateCities);
 
-router.delete('/:id', deleteCities);
+router.delete('/:id', passport.authenticate( 'jwt',{ session: false}), isAdmin, deleteCities);
 
 export default router;

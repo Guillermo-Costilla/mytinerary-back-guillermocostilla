@@ -20,16 +20,7 @@ const controller = {
   },
   createActivities: async (req, res) => {
     try {
-      const itineraryId = req.body.itinerary;
-
-      const itinerary = await Itinerary.findById(itineraryId);
-      if (!itinerary) {
-        return res.status(404).json({
-          success: false,
-          message: "itinerary not found",
-        });
-      }
-
+    
       const newActivity = await Activity.create(req.body);
 
       return res.status(201).json({
