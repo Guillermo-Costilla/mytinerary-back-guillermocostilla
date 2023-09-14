@@ -18,6 +18,6 @@ export const accountExistsSignin = async (req, res, next) => {
 
     return res.status(400).json({
         success: false,
-        message: 'Usuario no registrado'
+        message: 'Unregistered user, please register'
     })
 }
