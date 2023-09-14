@@ -14,12 +14,12 @@ const controller = {
 
             return res.status(201).json({
                 success: true,
-                message: 'Usuario registrado!'
+                message: 'User created!'
             })
         } catch (error) {
             res.status(500).json({
                 success: false,
-                message: 'Error al registrar el usuario'
+                message: 'Error registering user'
             })
         }
     },
@@ -105,7 +105,7 @@ const controller = {
 
             res.status(200).json({
                 success: true,
-                message: 'Usuario logueado correctamente con Google',
+                message: 'User correctly logged in with Google',
                 response: {
                     token,
                     user: {
@@ -119,7 +119,7 @@ const controller = {
         } catch (error) {
             res.status(500).json({
                 success: false,
-                message: 'Error al autenticar el usuario'
+                message: 'Error authenticating user'
             })
         }
     },
@@ -133,13 +133,13 @@ const controller = {
 
             return res.status(200).json({
                 success: true,
-                message: 'Usuario deslogueado'
+                message: 'Logged out user'
             })
         } catch (error) {
             console.log(error)
             res.status(500).json({
                 success: false,
-                message: 'Error al autenticar el usuario'
+                message: 'Error authenticating user'
             })
         }
     },
