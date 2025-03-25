@@ -17,11 +17,11 @@ app.use(cors());
 app.use('/api', indexRouter);
 
 // Sirve los archivos estáticos de la carpeta build
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Maneja todas las rutas y devuelve el index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => console.log('Server running on port: ' + PORT));
