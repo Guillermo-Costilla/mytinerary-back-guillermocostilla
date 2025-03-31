@@ -23,7 +23,7 @@ const controller = {
         message: "No countries or cities found",
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.status(500).json({
         success: false,
         message: "Error when obtaining cities",
@@ -46,7 +46,7 @@ const controller = {
         message: "The city could not be found",
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.status(500).json({
         success: false,
         message: "Error when obtaining city",
@@ -60,10 +60,10 @@ const controller = {
 
       return res.status(201).json({
         success: true,
-        Message: "City created",
+        message: "City created",
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.status(500).json({
         success: false,
         message: "Error when creating city",
@@ -77,10 +77,10 @@ const controller = {
 
       return res.status(200).json({
         success: true,
-        message: "la ciudad se actualizo",
+        message: "City updated successfully",
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       res.status(500).json({
         success: false,
         message: "Error when updating city",
@@ -90,14 +90,14 @@ const controller = {
 
   deleteCities: async (req, res) => {
     try {
-      await Event.deleteOne({ _id: req.params.id });
+      await City.deleteOne({ _id: req.params.id });
 
       return res.status(200).json({
         success: true,
-        message: "The city was successfully eliminated",
+        message: "The city was successfully deleted",
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return res.status(500).json({
         success: false,
         message: "Error when deleting the city",

@@ -2,11 +2,11 @@ import Joi from 'joi';
 
 export const createUserSchema = Joi.object({
     name: Joi.string()
+    .required()
     .min(2)
     .max(30),
 
     lastname: Joi.string()
-    .required()
     .min(2)
     .max(30),
 
@@ -23,7 +23,6 @@ export const createUserSchema = Joi.object({
     .alphanum(),
 
     image: Joi.string()
-    .required()
     .uri(),
 
     country: Joi.string()

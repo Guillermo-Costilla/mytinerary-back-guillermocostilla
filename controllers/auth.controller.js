@@ -33,7 +33,7 @@ const controller = {
 
             const token = jwt.sign(
                 {
-                    id: user._id,
+                    _id: user._id,
                     email: user.email,
                     name: user.name,
                     image: user.image
@@ -48,8 +48,10 @@ const controller = {
                 success: true,
                 message: 'Usuario logueado correctamente',
                 response: {
+                    userId: user._id,
                     token,
                     user: {
+                        _id: user._id,
                         name: user.name,
                         email: user.email,
                         image: user.image

@@ -18,7 +18,7 @@ router.post('/signin', validator(validateSigninSchema), accountExistsSignin, acc
 
 router.post('/google', googleSignin)
 
-router.post('/signout', passport.authenticate('jwt', {session: false}), signout)
+router.post('/signout', signout)
 
 router.post('/token', passport.authenticate('jwt', {session: false}), token)
 
